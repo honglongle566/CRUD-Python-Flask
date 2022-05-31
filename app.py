@@ -2,17 +2,18 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
- 
+
 app = Flask(__name__, template_folder='.')
 app.secret_key = "cairocoders-ednalan"
  
 DB_HOST = "localhost"
-DB_NAME = "Demo"
+DB_NAME = "crudstudents"
 DB_USER = "postgres"
 DB_PASS = "abc12345"
- 
+
+#connect
 conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
- 
+
 @app.route('/')
 def Index():
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -55,7 +56,7 @@ def update_student(id):
             UPDATE students
             SET fname = %s,
                 lname = %s,
-                email = %s
+                email = %
             WHERE id = %s
         """, (fname, lname, email, id))
         flash('Student Updated Successfully')
