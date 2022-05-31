@@ -1,1 +1,1 @@
-Hello, Have Nice day!
+Hello, Have a nice day!
